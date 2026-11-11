@@ -164,7 +164,13 @@ weatherForm.addEventListener("submit", event => {
         return;
     }
 
-    getWeather(city);
+    getWeather(city){
+if (!response.ok) {
+    const errorData = await response.json();
+
+    throw new Error(
+        errorData.message || "Unable to retrieve weather information."
+    );
 });
 
 // Load recent searches when the page opens
