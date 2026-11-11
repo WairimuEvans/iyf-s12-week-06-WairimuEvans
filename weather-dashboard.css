@@ -91,3 +91,47 @@ footer {
         padding: 18px;
     }
 }
+
+.temperature {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2563eb;
+    margin: 10px 0;
+}
+
+.weather-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.weather-card p {
+    margin: 8px 0;
+}
+
+#recent-searches {
+    list-style: none;
+    padding: 0;
+}
+
+#recent-searches li {
+    margin: 8px 0;
+}
+
+#recent-searches button {
+    width: 100%;
+    text-align: left;
+}
+
+#loading {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+#error-message {
+    color: #dc2626;
+    font-weight: bold;
+    padding: 10px;
+    background: #fee2e2;
+    border-radius: 6px;
+}
