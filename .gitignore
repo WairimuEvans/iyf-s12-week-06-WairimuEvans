@@ -1,0 +1,11 @@
+
+# Local configuration and API keys
+config.js
+
+# Dependencies
+node_modules/
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
