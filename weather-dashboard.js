@@ -1,4 +1,5 @@
 const WEATHER_API_URL = "YOUR_CLOUDFLARE_WORKER_URL";
+
 const weatherForm = document.getElementById("weather-form");
 const cityInput = document.getElementById("city-input");
 const loading = document.getElementById("loading");
@@ -9,7 +10,7 @@ const recentSearches = document.getElementById("recent-searches");
 const RECENT_SEARCHES_KEY = "weatherRecentSearches";
 const MAX_RECENT_SEARCHES = 5;
 
-// Retrieve weather information from OpenWeatherMap
+// Retrieve weather information
 async function getWeather(city) {
     try {
         showLoading();
@@ -18,20 +19,13 @@ async function getWeather(city) {
         const url = `${WEATHER_API_URL}?city=${encodeURIComponent(city)}`;
 
         const response = await fetch(url);
+        const data = await response.json();
 
         if (!response.ok) {
-            if (response.status === 404) {
-                throw new Error("City not found. Check the spelling and try again.");
-            }
-
-            if (response.status === 401) {
-                throw new Error("Invalid API key. Check your configuration.");
-            }
-
-            throw new Error("Unable to retrieve weather information.");
+            throw new Error(
+                data.message || "Unable to retrieve weather information."
+            );
         }
-
-        const data = await response.json();
 
         displayWeather(data);
         saveRecentSearch(data.name);
@@ -60,7 +54,8 @@ function displayWeather(data) {
     temperature.classList.add("temperature");
 
     const feelsLike = document.createElement("p");
-    feelsLike.textContent = `Feels like: ${Math.round(data.main.feels_like)}°C`;
+    feelsLike.textContent =
+        `Feels like: ${Math.round(data.main.feels_like)}°C`;
 
     const humidity = document.createElement("p");
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
@@ -69,7 +64,8 @@ function displayWeather(data) {
     wind.textContent = `Wind speed: ${data.wind.speed} m/s`;
 
     const icon = document.createElement("img");
-    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    icon.src =
+        `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     icon.alt = data.weather[0].description;
 
     weatherCard.append(
@@ -83,7 +79,7 @@ function displayWeather(data) {
     );
 }
 
-// Save recent searches in localStorage
+// Save recent searches
 function saveRecentSearch(city) {
     let searches = JSON.parse(
         localStorage.getItem(RECENT_SEARCHES_KEY) || "[]"
@@ -94,7 +90,6 @@ function saveRecentSearch(city) {
     );
 
     searches.unshift(city);
-
     searches = searches.slice(0, MAX_RECENT_SEARCHES);
 
     localStorage.setItem(
@@ -164,16 +159,10 @@ weatherForm.addEventListener("submit", event => {
         return;
     }
 
-    getWeather(city){
-if (!response.ok) {
-    const errorData = await response.json();
-
-    throw new Error(
-        errorData.message || "Unable to retrieve weather information."
-    );
+    getWeather(city);
 });
 
-// Load recent searches when the page opens
+// Load recent searches when page opens
 displayRecentSearches();
 
 console.log("Weather Dashboard initialized.");
