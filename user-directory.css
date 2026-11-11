@@ -63,3 +63,36 @@ header h1 {
     text-align: center;
     margin: 20px 0;
 }
+
+/* Search and filter controls */
+[aria-label="User directory controls"] {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+[aria-label="User directory controls"] input,
+[aria-label="User directory controls"] select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font: inherit;
+}
+
+#empty-message {
+    text-align: center;
+    margin: 20px 0;
+    color: #6b7280;
+}
+
+@media (min-width: 600px) {
+    [aria-label="User directory controls"] {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: end;
+    }
+}

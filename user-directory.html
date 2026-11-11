@@ -13,12 +13,32 @@
             <h1>User Directory</h1>
             <p>Explore users retrieved from an API.</p>
         </header>
+              <section aria-label="User directory controls">
+    <label for="search">Search by name or email</label>
+    <input
+        type="search"
+        id="search"
+        placeholder="Search users..."
+    >
 
-        <section aria-live="polite">
-            <p id="loading">Loading users...</p>
-            <p id="error" class="hidden"></p>
-            <section id="users-container" aria-label="User listings"></section>
-        </section>
+    <label for="sort">Sort by name</label>
+    <select id="sort">
+        <option value="az">A - Z</option>
+        <option value="za">Z - A</option>
+    </select>
+
+    <label for="city-filter">Filter by city</label>
+    <select id="city-filter">
+        <option value="all">All Cities</option>
+    </select>
+</section>
+
+<section aria-live="polite">
+    <p id="loading">Loading users...</p>
+    <p id="error" class="hidden"></p>
+    <p id="empty-message" class="hidden">No users found.</p>
+    <section id="users-container" aria-label="User listings"></section>
+</section>
     </main>
 </body>
 </html>
