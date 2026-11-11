@@ -1,3 +1,4 @@
+const WEATHER_API_URL = "YOUR_CLOUDFLARE_WORKER_URL";
 const weatherForm = document.getElementById("weather-form");
 const cityInput = document.getElementById("city-input");
 const loading = document.getElementById("loading");
