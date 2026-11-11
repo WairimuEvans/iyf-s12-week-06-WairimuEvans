@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory</title>
+    <link rel="stylesheet" href="user-directory.css">
+    <script src="user-directory.js" defer></script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>User Directory</h1>
+            <p>Explore users retrieved from an API.</p>
+        </header>
+
+        <section aria-live="polite">
+            <p id="loading">Loading users...</p>
+            <p id="error" class="hidden"></p>
+            <section id="users-container" aria-label="User listings"></section>
+        </section>
+    </main>
+</body>
+</html>
