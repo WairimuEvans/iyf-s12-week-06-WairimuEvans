@@ -1,4 +1,4 @@
-const WEATHER_API_URL = "YOUR_CLOUDFLARE_WORKER_URL";
+const WEATHER_API_URL = "https://iyf-s12-week-06-wairimuevans.evanswjeff.workers.dev";
 
 const weatherForm = document.getElementById("weather-form");
 const cityInput = document.getElementById("city-input");
