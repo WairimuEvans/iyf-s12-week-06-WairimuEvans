@@ -32,8 +32,16 @@ export default {
         }
 
         const url = new URL(request.url);
-        const city = url.searchParams.get("city");
 
+        if (url.pathname !== "/" && url.pathname !== "/weather") {
+           return new Response("Not Found", {
+               status: 404,
+               headers: corsHeaders
+          });
+}
+
+        const city = url.searchParams.get("city");
+        
         if (!city || !city.trim()) {
             return Response.json(
                 { message: "A city name is required." },
