@@ -1,4 +1,4 @@
-const WEATHER_API_URL = "https://iyf-s12-week-06-wairimuevans.evanswjeff.workers.dev";
+const WEATHER_API_URL = "https://iyf-s12-week-06-wairimuevans.evanswjeff-23f.workers.dev";
 
 const weatherForm = document.getElementById("weather-form");
 const cityInput = document.getElementById("city-input");
